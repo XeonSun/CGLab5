@@ -17,7 +17,6 @@ namespace CGLab5
         public Point3D topPoint;
         public Point3D bottomPoint;
         public double[,] aphineMatrix;
-        public Point3D camera;
         public SurfaceParametres(double R, double H)
         {
             this.R = R;
