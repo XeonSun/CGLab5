@@ -22,7 +22,6 @@ namespace CGLab5
             _secondPoint = secondPoint;
             _thirdPoint = thirdPoint;
             _normal = new Point3D();
-            _light = new Point3D(123456, 0, 123456);
         }
         private void CalcNormal()
         {
@@ -39,18 +38,17 @@ namespace CGLab5
             if (ct < 0) ct = 0;
             return ct;
         }
-        public void Draw(Graphics g, Point3D light)
+        public void Draw(Graphics g, Point3D light, int x_cadr = 0, int y_cadr = 0, bool drawEdges = false)
         {
             _light = light;
             CalcNormal();
             if (_normal.Z >= 0)
             {
-                PointF[] pointFs = { new PointF((float)_fitstPoint.X, (float)_fitstPoint.Y),
-                                     new PointF((float)_secondPoint.X, (float)_secondPoint.Y),
-                                     new PointF((float)_thirdPoint.X, (float)_thirdPoint.Y) };
+                PointF[] pointFs = { new PointF((float)_fitstPoint.X + x_cadr, (float)_fitstPoint.Y + y_cadr),
+                                     new PointF((float)_secondPoint.X + x_cadr, (float)_secondPoint.Y + y_cadr),
+                                     new PointF((float)_thirdPoint.X + x_cadr, (float)_thirdPoint.Y + y_cadr) };
                 g.FillPolygon(new SolidBrush(Color.FromArgb((int)(227 * CosTetha()) + 5, (int)(227 * CosTetha()) + 5, (int)(227 * CosTetha()) + 5)), pointFs);
-                //g.FillPolygon(new SolidBrush(Color.FromArgb(255, 0, 0)), pointFs);
-                //g.DrawPolygon(new Pen(Brushes.Black, 1), pointFs);
+                if (drawEdges) g.DrawPolygon(new Pen(Brushes.Black, 1), pointFs);
 
             }
         }

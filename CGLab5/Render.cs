@@ -15,11 +15,13 @@ namespace CGLab5
         public Camera cam;
         public Bitmap buffer;
         public Point3D light;
+        private Axis axis;
         Graphics g;
         public Render(double r, double h)
         {
+            axis = new Axis();
             cam = new Camera(0, 0, 250);
-            light = new Point3D(1000, 10000, 1000);
+            light = new Point3D(0, 100, 0);
             Cylindr = new SurfaceCyl(r, h);
             buffer = new Bitmap(800, 500);
             g = Graphics.FromImage(buffer);
@@ -42,9 +44,22 @@ namespace CGLab5
             p.Y = a[1];
             p.Z = a[2];
         }
-        public Bitmap Draw(bool centralProection = true)
+        public Bitmap Draw(int x_cadr,int y_cadr,bool centralProection = true)
         {
             g.Clear(Color.White);
+
+            axis._xAx.Reset();
+            axis._yAx.Reset();
+            axis._zAx.Reset();
+            axis._O.Reset();
+            AphineGlobal(axis._xAx);
+            AphineGlobal(axis._yAx);
+            AphineGlobal(axis._zAx);
+            AphineGlobal(axis._O);
+            AphineGlobal(light);
+            AphineGlobal(light);
+            axis.Draw(g, x_cadr, y_cadr);
+            light.Reset();
             AphineGlobal(light);
             foreach (Point3D p in Cylindr.points)
             {
@@ -61,7 +76,7 @@ namespace CGLab5
             }
             foreach(Polygon p in Cylindr.polygons)
             {
-                p.Draw(g,light);
+                p.Draw(g,light,x_cadr,y_cadr);
             }
             g.Save();
             return buffer;
