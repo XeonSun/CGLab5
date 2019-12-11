@@ -23,9 +23,10 @@ namespace CGLab5
         }
         public void Draw(Graphics g, int x_cadr, int y_cadr)
         {
-            g.DrawLine(Pens.Black,(float) _O.X + x_cadr, (float)_O.Y + y_cadr, (float)_xAx.X + x_cadr, (float)_xAx.Y + y_cadr);
-            g.DrawLine(Pens.Black, (float)_O.X + x_cadr, (float)_O.Y + y_cadr, (float)_yAx.X + x_cadr, (float)_yAx.Y + y_cadr);
-            g.DrawLine(Pens.Black, (float)_O.X + x_cadr, (float)_O.Y + y_cadr, (float)_zAx.X + x_cadr, (float)_zAx.Y + y_cadr);
+            g.DrawLine(Pens.Red,(float) _O.X + x_cadr, (float)_O.Y + y_cadr, (float)_xAx.X + x_cadr, (float)_xAx.Y + y_cadr);
+            g.DrawLine(Pens.Green, (float)_O.X + x_cadr, (float)_O.Y + y_cadr, (float)_yAx.X + x_cadr, (float)_yAx.Y + y_cadr);
+            g.DrawLine(Pens.Blue, (float)_O.X + x_cadr, (float)_O.Y + y_cadr, (float)_zAx.X + x_cadr, (float)_zAx.Y + y_cadr);
+            
 
         }
 
