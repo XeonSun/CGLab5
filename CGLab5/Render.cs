@@ -21,7 +21,7 @@ namespace CGLab5
         {
             axis = new Axis();
             cam = new Camera(0, 0, 250);
-            light = new Point3D(0, 10000, 0);
+            light = new Point3D(0, 10000, 100000);
             buffer = new Bitmap(650, 570);
             g = Graphics.FromImage(buffer);
         }

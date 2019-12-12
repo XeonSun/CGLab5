@@ -25,6 +25,7 @@ namespace CGLab5
             render = new Render();
             render.cam = cam;
             render.Cylindr = cyl;
+            label7.Text = $"Содержит {cyl.polygons.Count} полигонов";
             g.DrawImage(render.Draw(int.Parse(textBox_cadrX.Text), int.Parse(textBox_cadrY.Text)), 0, 0);
 
         }
