@@ -17,13 +17,12 @@ namespace CGLab5
         public Point3D light;
         private Axis axis;
         Graphics g;
-        public Render(double r, double h)
+        public Render()
         {
             axis = new Axis();
             cam = new Camera(0, 0, 250);
-            light = new Point3D(0, 100, 0);
-            Cylindr = new SurfaceCyl(r, h);
-            buffer = new Bitmap(800, 500);
+            light = new Point3D(0, 10000, 0);
+            buffer = new Bitmap(650, 570);
             g = Graphics.FromImage(buffer);
         }
 
