@@ -24,7 +24,7 @@ namespace CGLab5
             points = new List<Point3D>();
             polygons = new List<Polygon>();
             topPoint = new Point3D(0, 0, H * 1);
-            bottomPoint = new Point3D(0, 0, -H * 0.5);
+            bottomPoint = new Point3D(0, 0, -H * 0.6);
             camera = new Point3D(0, 0, 400);
             points.Add(topPoint);
             points.Add(bottomPoint);
@@ -36,14 +36,14 @@ namespace CGLab5
 
         private void SurfaceGenerator()
         {
-            for (int alpha = 0; alpha <= 19; alpha++)
+            for (double alpha = 0; alpha <= 20; alpha+=0.1)
             {
                 Point3D a = PointGen(alpha, -5);
                 Point3D b = PointGen(alpha + 1, -5);
                 polygons.Add(new Polygon(bottomPoint, a, b));
             }
             for (int r = -5; r <= 4; r++)
-                for (int alpha = 1; alpha <= 20; alpha++)
+                for (double alpha = 0; alpha <= 20; alpha += 0.1)
                 {
                     Point3D a = PointGen(alpha, r);
                     Point3D b = PointGen(alpha - 1, r);
@@ -53,14 +53,14 @@ namespace CGLab5
                     polygons.Add(new Polygon(a, c, d));
                 }
 
-            for (int alpha = 1; alpha <= 20; alpha++)
+            for (double alpha = 0; alpha <= 20; alpha += 0.1)
             {
                 Point3D a = PointGen(alpha, 5);
                 Point3D b = PointGen(alpha - 1, 5);
                 polygons.Add(new Polygon(topPoint, a, b));
             }
         }
-        private Point3D PointGen(int alpha, int r)
+        private Point3D PointGen(double alpha, double r)
         {
             Point3D point = new Point3D(R * Math.Sin(Math.PI * alpha / 10), R * Math.Cos(Math.PI * alpha / 10), H / 10 * r);
             points.Add(point);

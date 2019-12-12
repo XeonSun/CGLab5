@@ -35,7 +35,7 @@ namespace CGLab5
         private double CosTetha()
         {
             double ct = (_normal.X * _light.X + _normal.Y * _light.Y + _normal.Z * _light.Z) / (Math.Sqrt((_normal.X * _normal.X + _normal.Y * _normal.Y + _normal.Z * _normal.Z) * (_light.X * _light.X + _light.Y * _light.Y + _light.Z * _light.Z)));
-            if (ct < 0) ct = 0;
+            if (ct < 0) ct = -0.5;
             return ct;
         }
         public void Draw(Graphics g, Point3D light, int x_cadr = 0, int y_cadr = 0, bool drawEdges = false)
@@ -47,7 +47,9 @@ namespace CGLab5
                 PointF[] pointFs = { new PointF((float)_fitstPoint.X + x_cadr, (float)_fitstPoint.Y + y_cadr),
                                      new PointF((float)_secondPoint.X + x_cadr, (float)_secondPoint.Y + y_cadr),
                                      new PointF((float)_thirdPoint.X + x_cadr, (float)_thirdPoint.Y + y_cadr) };
-                g.FillPolygon(new SolidBrush(Color.FromArgb((int)(227 * CosTetha()) + 5, (int)(227 * CosTetha()) + 5, (int)(227 * CosTetha()) + 5)), pointFs);
+                //g.FillPolygon(new SolidBrush(Color.FromArgb((int)( 127 * CosTetha()) +127 , (int)(127 * CosTetha()) + 127, (int)(127 * CosTetha()) + 127)), pointFs);
+                g.FillPolygon(new SolidBrush(Color.FromArgb((int)(127 * CosTetha()) + 127, 0,0)), pointFs);
+
                 if (drawEdges) g.DrawPolygon(new Pen(Brushes.Black, 1), pointFs);
 
             }
